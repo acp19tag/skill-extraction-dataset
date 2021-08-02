@@ -23,10 +23,11 @@ Original job description data can be found at [Kaggle](https://www.kaggle.com/ai
 
 | Folder | Filename | Description
 | ------ | ------ | ------ |
-| data | answers.txt | Worker responses from the annotation task on AMT. |
-| data | testset.txt | Gold standard dataset for model evaluation. |
-| data | answers_worker_list.txt | List of Worker IDs according to their response index in answers.txt. |
-| data | worker_accuracies.csv | Dataframe of the accuracies of each Worker on the evaluation task (>70% required for participation). |
+| raw_data | answers.txt | Worker responses from the annotation task on AMT. |
+| raw_data | testset.txt | Gold standard dataset for model evaluation. |
+| raw_data | worker_accuracies.csv | Dataframe of the accuracies of each Worker (identified by their index in answers.txt) on the evaluation task (>70% required for participation). |
+| aggregation_scripts | dataframe_constructor.py | Python script for aggregating worker answers into single label pandas dataframe. |
+| schema | Combined_Annotation_Instructions.pdf | Schema document used during data collection on Amazon Mechanical Turk. |
 
 ## License
 
