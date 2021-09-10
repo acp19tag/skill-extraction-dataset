@@ -4,12 +4,17 @@ handles the construction of the dataframe from dataset/testset files
 """
 
 from src.utils import * # pylint: disable=all
+import os
+
+outfile_dir = '../aggregated_data/'
+if not os.path.exists(outfile_dir):
+    os.mkdir(outfile_dir)
 
 answers_file_dir = '../raw_data/answers.txt'
-answers_outfile_dir = '../aggregated_data/df_answers.csv'
+answers_outfile_dir = os.path.join(outfile_dir, 'df_answers.csv')
 
 testset_file_dir = '../raw_data/testset.txt'
-testset_outfile_dir = '../aggregated_data/df_testset.csv'
+testset_outfile_dir = os.path.join(outfile_dir, 'df_testset.csv')
 
 ranked_worker_indices = get_ranked_worker_indices(
     worker_accuracies_dir = '../raw_data/worker_accuracies.csv'
