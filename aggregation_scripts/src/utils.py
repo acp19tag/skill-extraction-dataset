@@ -329,7 +329,7 @@ def txt_to_df(file_dir, method, priority_list=[], worker_indices=[]):
                 word = line_items[0]
                 current_tag_list = line_items[1:]
 
-                sentence_number_list.append('Sentence #' + str(sentence_number))
+                sentence_number_list.append(str(sentence_number))
                 word_list.append(word)
                 tag_list.append(find_tag(current_tag_list, method, priority_list, worker_indices))
                 rolling_sentence_list.append(word)
@@ -349,9 +349,9 @@ def txt_to_df(file_dir, method, priority_list=[], worker_indices=[]):
 
     return pd.DataFrame(
         {
-            'Sentence #': sentence_number_list,
-            'Word': word_list,
-            'POS': pos_list,
-            'Tag': tag_list
+            'sentence_id': sentence_number_list,
+            'word': word_list,
+            'pos': pos_list,
+            'tag': tag_list
         }
     )
