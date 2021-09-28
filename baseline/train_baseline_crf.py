@@ -9,11 +9,8 @@ from re import VERBOSE
 import sys
 import pandas as pd
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
-from sklearn.metrics import classification_report, make_scorer
-import scipy.stats
 from baseline.src.utils import *
 import pickle
-# import sklearn_crfsuite
 from sklearn_crfsuite import CRF, scorers, metrics
 from collections import Counter
 
@@ -21,8 +18,6 @@ import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
 # import preprocessing scripts from parent directory
-
-# sys.path.insert(1, os.path.join(sys.path[0], '../..'))
 from preprocessing.extra_preprocessing import *
 
 # import data
@@ -46,7 +41,7 @@ getter_testset = SentenceGetter(df_testset)
 sentences_testset = getter_testset.sentences
 
 """
-For using established train/test sets
+Using established train/test sets...
 """
 X_train = [sent2features(s) for s in sentences_answers]
 y_train = [sent2labels(s) for s in sentences_answers]
@@ -55,7 +50,7 @@ X_test = [sent2features(s) for s in sentences_testset]
 y_test = [sent2labels(s) for s in sentences_testset]
 
 """
-For splitting testset into test/train
+... or, instead, splitting testset into test/train
 """
 # X = [sent2features(s) for s in sentences_answers]
 # y = [sent2labels(s) for s in sentences_answers]

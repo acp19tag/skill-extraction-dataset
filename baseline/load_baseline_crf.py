@@ -4,7 +4,6 @@ Loads the saved baseline model and asks for user prompts to predict.
 'train_baseline_crf.py' should be run first.
 """
 
-from sklearn_crfsuite import CRF, metrics
 from sklearn.metrics import classification_report
 import pickle
 import pandas as pd
@@ -13,28 +12,10 @@ import nltk
 from nltk.tokenize import WordPunctTokenizer
 
 saved_model_dir = "baseline/saved_models/baseline_crf.sav"
-crf = pickle.load(open(saved_model_dir, 'rb'))
-
-# df_testset_dir = ("preprocessed_data/df_testset.csv")
-# df_testset = pd.read_csv(df_testset_dir)
-
-# getter_testset = SentenceGetter(df_testset)
-# sentences_testset = getter_testset.sentences
-
-# X_test = [sent2features(s) for s in sentences_testset]
-# y_test = [sent2labels(s) for s in sentences_testset]
-
-# classes = list(
-#     {item for sublist in y_test for item in sublist} - {'O'}
-#     ) 
-
-# y_pred = crf.predict(X_test)
-
-# print(
-#     metrics.flat_classification_report(
-#         y_test, y_pred, labels = classes
-#     )
-# )
+try:
+    crf = pickle.load(open(saved_model_dir, 'rb'))
+except:
+    print("Error loading model .sav file. Did you run train_baseline_crf.py first?")
 
 def convert_prompt_to_df(text):
     """ 
