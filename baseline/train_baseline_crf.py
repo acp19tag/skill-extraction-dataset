@@ -96,8 +96,12 @@ crf.fit(X_train, y_train)
 
 # SAVE MODEL WEIGHTS
 
-saved_model_dir = "baseline/saved_models/baseline_crf.sav"
-pickle.dump(crf, open(saved_model_dir, 'wb'))
+saved_model_dir = "baseline/saved_models/"
+saved_model_filename = "baseline_crf.sav"
+# if directory doesn't exist, create it
+if not os.path.exists(saved_model_dir):
+    os.makedirs(saved_model_dir)
+pickle.dump(crf, open(saved_model_dir+saved_model_filename, 'wb'))
 
 # PREDICTION AND EVALUATION
 
