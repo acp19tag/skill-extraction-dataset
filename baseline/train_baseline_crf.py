@@ -1,3 +1,7 @@
+"""
+Trains, saves, and evaluates the baseline CRF model 
+on provided training and test data. 
+"""
 # Import packages
 
 import os
@@ -8,6 +12,7 @@ from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.metrics import classification_report, make_scorer
 import scipy.stats
 from baseline.src.utils import *
+import pickle
 # import sklearn_crfsuite
 from sklearn_crfsuite import CRF, scorers, metrics
 from collections import Counter
@@ -62,7 +67,7 @@ For splitting testset into test/train
 
 classes = list(
     {item for sublist in y_train for item in sublist}.union(
-        {item for sublist in y_train for item in sublist}
+        {item for sublist in y_test for item in sublist}
         ))
 
 new_classes = list(set(classes) - {'O'}) # NONE class removed from evaluation.
@@ -91,6 +96,8 @@ crf.fit(X_train, y_train)
 
 # SAVE MODEL WEIGHTS
 
+saved_model_dir = "baseline/saved_models/baseline_crf.sav"
+pickle.dump(crf, open(saved_model_dir, 'wb'))
 
 # PREDICTION AND EVALUATION
 
