@@ -9,6 +9,12 @@ from preprocessing.src.utils import *   # pylint: disable=all
 import re
 import inflect                          # pylint: disable=all
 import pandas as pd                     # pylint: disable=all
+from pandas.core.common import SettingWithCopyWarning
+
+# import warnings filter
+from warnings import simplefilter
+simplefilter(action='ignore', category=FutureWarning)
+simplefilter(action='ignore', category=SettingWithCopyWarning)
 
 def get_class_from_tag(full_tag):
     """ strips the BIO prefix from the tag and returns the class """
@@ -73,7 +79,7 @@ def update_misclassified_tags(input_data, output_data, iloc_span):
 def capture_misclassified_skills(input_data):
     """ uses regex to reassign misclassified Skills in Experience class """
 
-    output_data = input_data.copy()
+    output_data = input_data.copy(deep=True)
 
     # initialise start and stop index to identify span
     iloc_span = [0,0]
@@ -148,7 +154,7 @@ def split_spans_by_character(input_data, output_data, iloc_span, punctuation = {
 def separate_terms(input_data):
     """ separates terms with special characters """
 
-    output_data = input_data.copy()
+    output_data = input_data.copy(deep=True)
 
     # initialise start and stop index to identify span
     iloc_span = [0,0]
@@ -186,7 +192,7 @@ def separate_terms(input_data):
 def extra_preprocessing(input_data):
     """ combines above preprocessing into one function call """
     
-    output_data = input_data.copy()
+    output_data = input_data.copy(deep=True)
 
     output_data = capture_misclassified_skills(output_data)
     output_data = separate_terms(output_data)
