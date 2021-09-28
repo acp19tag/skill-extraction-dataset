@@ -1,3 +1,7 @@
 # Aggregated data #
 ###################
 /aggregated_data/*
+
+# Saved models #
+###################
+/baseline/saved_models/*
