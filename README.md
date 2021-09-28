@@ -26,7 +26,10 @@ Original job description data can be found at [Kaggle](https://www.kaggle.com/ai
 | raw_data | answers.txt | Worker responses from the annotation task on AMT. |
 | raw_data | testset.txt | Gold standard dataset for model evaluation. |
 | raw_data | worker_accuracies.csv | Dataframe of the accuracies of each Worker (identified by their index in answers.txt) on the evaluation task (>70% required for participation). |
-| aggregation_scripts | dataframe_constructor.py | Python script for aggregating worker answers into single label pandas dataframe. |
+| preprocessing | data_aggregation.py | Python script for aggregating worker answers into single label pandas dataframe. |
+| preprocessing | extra_preprocessing.py | Python script for simple data preprocessing. Used in baseline model. |
+| baseline | train_baseline_crf.py | Python script that trains, saves, and evaluates the baseline CRF model for entity recognition. |
+| baseline | load_baseline_crf.py | Python script that loads the saved baseline model and offers an interactive prompt for classification. train_baseline_crf must be run first. |
 | schema | Combined_Annotation_Instructions.pdf | Schema document used during data collection on Amazon Mechanical Turk. |
 
 ## License
