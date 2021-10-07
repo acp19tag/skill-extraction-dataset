@@ -5,3 +5,8 @@
 # Saved models #
 ###################
 /baseline/saved_models/*
+
+# Pycache files #
+###################
+*.pyc
+*.pyo
