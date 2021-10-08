@@ -195,9 +195,9 @@ def import_labels(data_dir: str, o_label=None) -> list:
         labels_list.append(o_label)
     return labels_list
 
-def combine_output_csv(dir):
+def combine_output_csv(directory):
         """ concatenates all .csv files in a directory """
-        all_files = glob.glob(os.path.join(dir, "*.csv"))
+        all_files = glob.glob(os.path.join(directory, "*.csv"))
         return pd.concat((pd.read_csv(f) for f in all_files), ignore_index=True)
 
 def get_worker_list(AnnotationSet):
@@ -356,9 +356,7 @@ def txt_to_df(file_dir, method, priority_list=[], worker_indices=[]):
         }
     )
 
-"""
-EXTRA PREPROCESSING - utils
-"""
+# EXTRA PREPROCESSING - utils
 
 def suppress_classes(label, list_to_suppress):
     """ returns 'O' if class in list """

@@ -4,7 +4,6 @@ Loads the saved baseline model and asks for user prompts to predict.
 'train_baseline_crf.py' should be run first.
 """
 
-from sklearn.metrics import classification_report
 import pickle
 import pandas as pd
 from baseline.src.utils import *
@@ -14,8 +13,8 @@ from nltk.tokenize import WordPunctTokenizer
 saved_model_dir = "baseline/saved_models/baseline_crf.sav"
 try:
     crf = pickle.load(open(saved_model_dir, 'rb'))
-except:
-    print("Error loading model .sav file. Did you run train_baseline_crf.py first?")
+except FileNotFoundError:
+    print("No model .sav file found. Did you run train_baseline_crf.py first?")
 
 def convert_prompt_to_df(text):
     """ 
@@ -31,13 +30,8 @@ def convert_prompt_to_df(text):
     rolling_sentence_list = []
     previous_line_break = True
 
-    num_lines = sum(1 for line in text.splitlines())
-
     for word in WordPunctTokenizer().tokenize(text):
         if word: # i.e. not line break
-            # line_items = line.split()
-            # word = line_items[0]
-            # current_tag_list = line_items[1:]
             sentence_number_list.append(str(sentence_number))
             word_list.append(word)
             tag_list.append('?')

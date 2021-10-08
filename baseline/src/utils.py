@@ -4,8 +4,6 @@
 utilities to aid data handling in the baseline CRF model.
 """
 
-import numpy as np
-
 class SentenceGetter(object):
 
     def __init__(self, data):
