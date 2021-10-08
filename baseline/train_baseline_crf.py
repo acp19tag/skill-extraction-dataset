@@ -5,13 +5,11 @@ on provided training and test data.
 # Import packages
 
 import os
-from re import VERBOSE
-import sys
 import pandas as pd
-from sklearn.model_selection import train_test_split, RandomizedSearchCV
+from sklearn.model_selection import RandomizedSearchCV
 from baseline.src.utils import *
 import pickle
-from sklearn_crfsuite import CRF, scorers, metrics
+from sklearn_crfsuite import CRF, metrics
 from collections import Counter
 
 import matplotlib.pyplot as plt
@@ -52,6 +50,8 @@ y_test = [sent2labels(s) for s in sentences_testset]
 """
 ... or, instead, splitting testset into test/train
 """
+# from sklearn.model_selection import train_test_split
+
 # X = [sent2features(s) for s in sentences_answers]
 # y = [sent2labels(s) for s in sentences_answers]
 
