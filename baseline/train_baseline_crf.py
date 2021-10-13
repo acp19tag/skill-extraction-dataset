@@ -11,6 +11,7 @@ from baseline.src.utils import *
 import pickle
 from sklearn_crfsuite import CRF, metrics
 from collections import Counter
+import sklearn
 
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
@@ -59,7 +60,6 @@ y_test = [sent2labels(s) for s in sentences_testset]
 #     X, y, test_size = 0.33, random_state = 0 
 # )
 
-
 classes = list(
     {item for sublist in y_train for item in sublist}.union(
         {item for sublist in y_test for item in sublist}
@@ -102,34 +102,13 @@ pickle.dump(crf, open(saved_model_dir+saved_model_filename, 'wb'))
 
 y_pred = crf.predict(X_test)
 
+# flatten data
+
+y_test_flattened = flatten(y_test)
+y_pred_flattened = flatten(y_pred)
+
 print(
-    metrics.flat_classification_report(
-        y_test, y_pred, labels = new_classes
+    sklearn.metrics.classification_report(
+        y_test_flattened, y_pred_flattened, labels=new_classes
     )
 )
-
-print()
-
-def print_transitions(trans_features):
-    for (label_from, label_to), weight in trans_features:
-        print("%-6s -> %-7s %0.6f" % (label_from, label_to, weight))
-        
-print("Top likely transitions:")
-print_transitions(Counter(crf.transition_features_).most_common(20))
-print()
-
-print("\nTop unlikely transitions:")
-print_transitions(Counter(crf.transition_features_).most_common()[-20:])
-print()
-
-def print_state_features(state_features):
-    for (attr, label), weight in state_features:
-        print("%0.6f %-8s %s" % (weight, label, attr))
-        
-print("Top positive:")
-print_state_features(Counter(crf.state_features_).most_common(30))
-print()
-
-print("\nTop negative:")
-print_state_features(Counter(crf.state_features_).most_common()[-30:])
-print()
