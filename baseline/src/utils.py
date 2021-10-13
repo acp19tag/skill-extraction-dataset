@@ -4,6 +4,8 @@
 utilities to aid data handling in the baseline CRF model.
 """
 
+from itertools import chain
+
 class SentenceGetter(object):
 
     def __init__(self, data):
@@ -93,3 +95,10 @@ def tokenize_and_preserve_labels(sentence, text_labels, tokenizer):
         labels.extend([label] * n_subwords)
 
     return tokenized_sentence, labels
+
+def flatten(y):
+    """
+    flattens a list of lists.
+    from teamhg-memex/sklearn-crfsuite.
+    """
+    return list(chain.from_iterable(y))
