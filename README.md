@@ -5,11 +5,11 @@
 A public, human-labelled dataset of salient entities in job descriptions. 
 
 Salient entities include: 
-  - Skill
-  - Qualification
-  - Experience
-  - Occupation
-  - Domain
+- Skill
+- Qualification
+- Experience
+- Occupation
+- Domain
 
 Full details regarding annotation schema can be found in `schema/Combined_Annotation_Instructions.pdf`.
 
