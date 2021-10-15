@@ -1,6 +1,6 @@
+#! /usr/bin/python3
 """
 Loads the saved baseline model and asks for user prompts to predict. 
-
 'train_baseline_crf.py' should be run first.
 """
 

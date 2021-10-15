@@ -1,13 +1,12 @@
+#! /usr/bin/python3
 """
 Loads the saved baseline model and evaluates on testset. 
-
 'train_baseline_crf.py' should be run first.
 """
 
 import pickle
 import pandas as pd
 from baseline.src.utils import *
-import nltk
 from nltk.tokenize import WordPunctTokenizer
 import sklearn
 from collections import Counter

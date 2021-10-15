@@ -1,9 +1,10 @@
+#! /usr/bin/python3
 """
 Trains, saves, and evaluates the baseline CRF model 
 on provided training and test data. 
 """
-# Import packages
 
+# Import packages
 import os
 import pandas as pd
 from sklearn.model_selection import RandomizedSearchCV
@@ -20,7 +21,6 @@ plt.style.use('ggplot')
 from preprocessing.extra_preprocessing import *
 
 # import data
-
 df_answers_dir = ("preprocessed_data/df_answers.csv")
 df_testset_dir = ("preprocessed_data/df_testset.csv")
 
@@ -30,7 +30,7 @@ if not os.path.isfile(df_answers_dir): # if the preprocessed data files do not y
 df_answers = pd.read_csv(df_answers_dir)
 df_testset = pd.read_csv(df_testset_dir)
 
-# EXTRA PREPROCESSING
+# extra preprocessing
 df_answers = extra_preprocessing(df_answers)
 
 getter_answers = SentenceGetter(df_answers)
@@ -77,8 +77,7 @@ for class_label in sorted(classes):
 print()
 print('Training baseline model...')
 
-# MODEL TRAINING
-
+# train model
 crf = CRF(
     algorithm = 'lbfgs',
     c1 = 0.7476855308167297,    # best c1 parameter from RandomizedSearch
@@ -89,21 +88,17 @@ crf = CRF(
 
 crf.fit(X_train, y_train)
 
-# SAVE MODEL WEIGHTS
-
+# save model weights
 saved_model_dir = "baseline/saved_models/"
 saved_model_filename = "baseline_crf.sav"
-# if directory doesn't exist, create it
-if not os.path.exists(saved_model_dir):
+if not os.path.exists(saved_model_dir): # if directory doesn't exist, create it
     os.makedirs(saved_model_dir)
 pickle.dump(crf, open(saved_model_dir+saved_model_filename, 'wb'))
 
-# PREDICTION AND EVALUATION
-
+# generate predictions
 y_pred = crf.predict(X_test)
 
-# flatten data
-
+# flatten data and show results report
 y_test_flattened = flatten(y_test)
 y_pred_flattened = flatten(y_pred)
 
