@@ -9,7 +9,6 @@ import pandas as pd
 from baseline.src.utils import *
 import nltk
 from nltk.tokenize import WordPunctTokenizer
-# from sklearn_crfsuite import metrics
 import sklearn
 from collections import Counter
 
