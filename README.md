@@ -34,4 +34,4 @@ Original job description data can be found at [Kaggle](https://www.kaggle.com/ai
 
 ## License
 
-Creative Commons Zero v1.0 Universal
+Creative Commons Attribution 4.0 International
