@@ -1,4 +1,4 @@
-# Skill Extraction Dataset
+# Benchmark Corpus to Support Entity Recognition in Job Descriptions
 
 ## Overview
 
