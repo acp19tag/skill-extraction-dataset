@@ -1,5 +1,8 @@
 # Skill Extraction Dataset
 
+This is the code repository for the LREC 2022 paper [*Development of a Benchmark Corpus to Support Entity Recognition in Job Descriptions*](http://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.128.pdf).
+The authors are Thomas AF Green, Diana Maynard, and Chenghua Lin. 
+
 ## Overview
 
 A public, human-labelled dataset of salient entities in job descriptions. 
@@ -32,6 +35,23 @@ Original job description data can be found at [Kaggle](https://www.kaggle.com/ai
 | baseline | load_baseline_crf.py | Python script that loads the saved baseline model and offers an interactive prompt for classification. train_baseline_crf must be run first. |
 | schema | Combined_Annotation_Instructions.pdf | Schema document used during data collection on Amazon Mechanical Turk. |
 
+## Citation
+```
+@inproceedings{Green2022,
+   author = {Thomas AF Green and Diana Maynard and Chenghua Lin},
+   journal = {Proceedings of the 13th Conference on Language Resources and Evaluation},
+   keywords = {corpus development,entity recognition,job descriptions,natural language processing},
+   pages = {1201-1208},
+   title = {Development of a Benchmark Corpus to Support Entity Recognition in Job Descriptions},
+   url = {http://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.128.pdf},
+   year = {2022}
+}
+```
+## Contact
+
+If you have any questions regarding this dataset, please contact the lead author at <tafgreen1@sheffield.ac.uk>.
+
 ## License
 
 Creative Commons Attribution 4.0 International
+
