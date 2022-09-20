@@ -1,4 +1,4 @@
-# Skill Extraction Dataset
+# Benchmark Corpus to Support Entity Recognition in Job Descriptions
 
 This is the code repository for the LREC 2022 paper [*Development of a Benchmark Corpus to Support Entity Recognition in Job Descriptions*](http://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.128.pdf).
 The authors are Thomas AF Green, Diana Maynard, and Chenghua Lin. 
